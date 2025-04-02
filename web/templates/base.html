@@ -39,6 +39,10 @@
       margin-bottom: 25px;
     }
 
+    .elementor-3721 .elementor-element.elementor-element-65ed064 .heading-text {
+      line-height: 1.1em !important;
+    }
+
     .heading-text {
       margin-bottom: 25px;
     }
@@ -1416,6 +1420,44 @@
 
 
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault();  // Prevent default form submission
+
+            let form = this;
+            let formData = new FormData(form);
+
+            fetch("{% url 'submit_contact' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}"  // Django CSRF Token
+                }
+            })
+                .then(response => response.json())  // Convert response to JSON
+                .then(data => {
+                    let messageBox = document.getElementById("form-message");
+                    messageBox.textContent = data.message;
+                    messageBox.style.display = "block";
+                    messageBox.style.backgroundColor = "#d4edda";  // Green for success
+                    messageBox.style.color = "#155724";
+                    messageBox.style.border = "1px solid #c3e6cb";
+
+                    form.reset();  // Reset the form fields
+                })
+                .catch(error => {
+                    let messageBox = document.getElementById("form-message");
+                    messageBox.textContent = "Something went wrong. Please try again.";
+                    messageBox.style.display = "block";
+                    messageBox.style.backgroundColor = "#f8d7da";  // Red for error
+                    messageBox.style.color = "#721c24";
+                    messageBox.style.border = "1px solid #f5c6cb";
+                });
+        });
+    });
+</script>
+
 </body>
 
 </html>

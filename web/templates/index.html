@@ -1804,7 +1804,11 @@
                                   <div id="metform-wrap-cf4c153-4307" class="mf-form-wrapper" data-form-id="4307" data-action="https://demo.7iquid.com/advitex/wp-json/metform/v1/entries/insert/4307" data-wp-nonce="1ba9e2e7cc" data-form-nonce="da88517af9" data-quiz-summery="false" data-save-progress="false"
                                        data-form-type="general-form" data-stop-vertical-effect=""></div>
                                   <div style="margin: auto;max-width:700px">
-                                    <form style="padding:40px 48px;border-radius:24px;max-width: 700px;  background: white; box-shadow: 0px 5px 15px 6px rgba(108, 177.00000000000009, 239.99999999999997, 0.2);">
+                                    <form id="contact-form" style="padding:40px 48px;border-radius:24px;max-width: 700px; background: white; box-shadow: 0px 5px 15px 6px rgba(108, 177, 239, 0.2);">
+                                      {% csrf_token %}
+
+                                      <div id="form-message" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 12px; font-size: 14px;"></div>
+
                                       <label for="full-name" style="display: block;color: #3F3D2E;font-size: 14px;font-weight: 400;padding: 0;margin: 0;">Full
                                         Name *</label>
                                       <input type="text" id="full-name" name="full-name" placeholder="Your full name" required
@@ -1824,11 +1828,10 @@
                                       <textarea id="message" name="message" placeholder="Write your message here..." rows="5"
                                                 style="width: 100%; padding: 10px 12px; margin: 5px 0 10px; border: 1px solid #E0E3E6; color: #3F3D2E; border-radius: 12px;"></textarea>
 
-
+                                      <button type="submit" style="margin-top:30px;width: 100%; background-color: #02a47d; color: white; padding: 10px; border: none; border-radius: 63px; font-size: 16px; cursor: pointer;">
+                                        Send Message
+                                      </button>
                                     </form>
-                                    <button type="submit" style="margin-top:30px;width: 100%; background-color: #02a47d; color: white; padding: 10px; border: none; border-radius: 63px; font-size: 16px; cursor: pointer;">
-                                      Send Message
-                                    </button>
                                   </div>
                                 </div>
                               </div>
